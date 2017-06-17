@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.getData().catch((e) => {
+    this.props.actions.getHelloMsg().catch((e) => {
       console.log(e)
     })
   }

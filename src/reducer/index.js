@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions'
 import actions from '../action'
 
 const reducer = handleActions({
-  [actions.getData]: (state, action) => {
+  [actions.getHelloMsg]: (state, action) => {
     if (action.error) {
       return state
     }

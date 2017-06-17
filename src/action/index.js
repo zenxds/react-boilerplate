@@ -3,8 +3,8 @@ import * as apis from '../constant/api'
 import request from '../util/request'
 
 const actions = createActions({
-  getData: () => {
-    return request(apis.data)
+  getHelloMsg: () => {
+    return request(apis.helloMsg)
   }
 })
 

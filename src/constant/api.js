@@ -1,1 +1,1 @@
-export const data = '/api/data.json'
+export const helloMsg = '/api/hello.json'
