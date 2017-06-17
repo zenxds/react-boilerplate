@@ -2,7 +2,7 @@
   "name": "react-boilerplate",
   "version": "0.1.0",
   "description": "react-boilerplate",
-  "main": "build/index.js",
+  "main": "build/main.js",
   "scripts": {
     "start": "webpack-dashboard -- webpack-dev-server -w --open --env=dev",
     "build": "webpack --env=prod",
@@ -20,7 +20,6 @@
     "autoprefixer": "^7.1.1",
     "ava": "^0.19.1",
     "babel-core": "^6.24.1",
-    "babel-eslint": "^7.2.3",
     "babel-loader": "^6.4.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.5.1",

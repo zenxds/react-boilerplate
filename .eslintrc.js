@@ -1,11 +1,10 @@
 module.exports = {
-  "parser": "babel-eslint",  
-  "extends": "eslint:recommended",
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 7,
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "experimentalObjectRestSpread": true
     }
   },
   "env": {
@@ -13,6 +12,10 @@ module.exports = {
     "node": true,
     "es6": true
   },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "plugins": [
     "import",
     "react"
@@ -23,6 +26,11 @@ module.exports = {
     // 行尾必须加分号
     "semi": "off",
     // 文件末尾必须留空行
-    "eol-last": "off"
+    "eol-last": "off",
+
+    // React必须作为全局变量
+    "react/react-in-jsx-scope": "off",
+    // prop必须校验
+    "react/prop-types": "off"
   }
 };

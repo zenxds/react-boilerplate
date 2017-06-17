@@ -5,14 +5,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 const moment = require('moment')
 
-const buildDir = path.join(__dirname, '../build')
-const publicPath = '/'
-
 module.exports = {
-  entry: './index.js',
+  entry: './src/index.js',
   output: {
-    path: buildDir,
-    publicPath: publicPath,
+    path: path.join(__dirname, '../build'),
+    publicPath: '/',
     filename: 'main.js'
   },
   module: {
