@@ -28,9 +28,9 @@ module.exports = {
     // 文件末尾必须留空行
     "eol-last": "off",
 
-    // React必须作为全局变量
+    // React必须import作为全局变量
     "react/react-in-jsx-scope": "off",
-    // prop必须校验
+    // prop必须经过校验
     "react/prop-types": "off"
   }
 };

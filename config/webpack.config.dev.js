@@ -3,7 +3,6 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 
-const publicPath = '/'
 
 module.exports = {
   entry: [
@@ -12,7 +11,7 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, '../build'),
-    publicPath,
+    publicPath: '/',
     filename: 'main.js'
   },
   devtool: 'eval-source-map',
@@ -76,16 +75,13 @@ module.exports = {
     new DashboardPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({
-      'React': 'react'
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('dev')
     })
   ],
   devServer: {
     hot: true,
-    publicPath,
+    publicPath: '/',
     host: '0.0.0.0',
     disableHostCheck: true
   }
