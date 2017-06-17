@@ -5,7 +5,8 @@
   "main": "build/main.js",
   "scripts": {
     "start": "webpack-dashboard -- webpack-dev-server -w --open --env=dev",
-    "build": "webpack --env=prod",
+    "vendor": "webpack --env=dll",
+    "build": "npm run vendor && webpack --env=prod",
     "test": "ava"
   },
   "author": {
