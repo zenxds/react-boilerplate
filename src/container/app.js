@@ -23,8 +23,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.getHelloMsg().catch((e) => {
-      console.log(e)
+    this.props.actions.getHelloMsg().then((action) => {
+      if (action.error) {
+        console.log(action.payload)
+      }
     })
   }
 }
