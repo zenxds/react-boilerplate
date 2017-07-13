@@ -10,7 +10,6 @@ module.exports = {
     './src/index.js'
   ],
   output: {
-    // publicPath: '/',    
     path: path.join(__dirname, '../build'),
     filename: 'main.js'
   },
@@ -79,8 +78,8 @@ module.exports = {
     })
   ],
   devServer: {
+    contentBase: [path.join(__dirname, '../build'), path.join(__dirname, '..')],
     hot: true,
-    publicPath: '/',
     host: '0.0.0.0',
     disableHostCheck: true
   }

@@ -15,7 +15,7 @@
     "dev": {
       "plugins": ["transform-object-rest-spread", "react-hot-loader/babel"]
     },
-    "prod": {
+    "production": {
       "plugins": ["transform-object-rest-spread"]
     }
   }
