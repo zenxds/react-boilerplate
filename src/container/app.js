@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from '../action'
 
+import 'normalize.css/normalize.css'
+import './index.less'
+
 import Header from './component/header'
 import Content from './component/content'
 import Footer from './component/footer'
-
-import 'normalize.css/normalize.css'
-import './index.less'
 
 class App extends Component {
   render() {
