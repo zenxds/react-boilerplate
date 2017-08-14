@@ -13,7 +13,7 @@ module.exports = {
     path: path.join(__dirname, '../build'),
     filename: 'main.js'
   },
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
   module: {
     rules: rules.concat([
       {
@@ -81,7 +81,7 @@ module.exports = {
     contentBase: [
       path.join(__dirname, '../build'),
       path.join(__dirname, '..')
-    ],   
+    ],
     hot: true,
     host: '0.0.0.0',
     disableHostCheck: true,
