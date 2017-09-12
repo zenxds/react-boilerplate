@@ -1,7 +1,6 @@
 import { Component } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import actions from '../action'
+import { observer } from "mobx-react"
+import { observable, action } from "mobx"
 
 import 'normalize.css/normalize.css'
 import './index.less'
@@ -10,35 +9,33 @@ import Header from './component/header'
 import Content from './component/content'
 import Footer from './component/footer'
 
-class App extends Component {
-  render() {
-    const props = this.props
+import * as actions from '../action'
 
+@observer
+class App extends Component {
+  @observable msg = ''
+
+  componentDidMount() {
+    actions.getHelloMsg().then(data => {
+      this.setMsg(data.helloMsg)
+    })
+  }
+
+  @action
+  setMsg(msg) {
+    this.msg = msg
+  }
+
+  render() {
     return (
       <div>
-        <Header {...props} />
-        <Content {...props} />
-        <Footer {...props} />
+        <Header />
+        <Content msg={this.msg} />
+        <Footer />
       </div>
     )
   }
-
-  componentDidMount() {
-    this.props.actions.getHelloMsg().then((action) => {
-      if (action.error) {
-        console.log(action.payload)
-      }
-    })
-  }
 }
 
-const mapStateToProps = (state) => {
-  return state.toJS()
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App
