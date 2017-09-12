@@ -15,11 +15,11 @@ useStrict(true)
 
 const render = Component => {
   ReactDOM.render(
-    <Provider {...store}>
-      <AppContainer>
+    <AppContainer>
+      <Provider {...store}>
         <Component />
-      </AppContainer>
-    </Provider>,
+      </Provider>
+    </AppContainer>,
     document.getElementById('app')
   )
 }
