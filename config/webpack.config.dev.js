@@ -1,3 +1,4 @@
+const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -86,9 +87,13 @@ module.exports = {
     host: '0.0.0.0',
     disableHostCheck: true,
     setup(app){
-      app.all(/^\/hello/, function(req, res) {
+      app.use(function(req, res, next) {
         const p = path.join(__dirname, '../api', /\.json$/.test(req.path) ? req.path : req.path + '.json')
-        res.json(require(p))
+        if (fs.existsSync(p)) {
+          res.json(JSON.parse(fs.readFileSync(p, 'utf8')))
+        } else {
+          next()
+        }
       })
     }
   }
