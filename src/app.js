@@ -8,9 +8,14 @@ import Header from './component/Header'
 import Content from './component/Content'
 import Footer from './component/Footer'
 
-@inject('appStore')
+@inject('appStore', 'actions')
 @observer
 class App extends Component {
+
+  componentDidMount() {
+    this.props.actions.getMsg()
+  }
+
   render() {
     return (
       <div>
