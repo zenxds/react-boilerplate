@@ -8,9 +8,16 @@ class Action {
   }
 
   getMsg = () => {
-    request('/hello').then(action(data => {
-      this.store.msg = data.helloMsg
-    }))
+    request('/hello').then(data => {
+      this.merge({
+        msg: data.helloMsg
+      })
+    })
+  }
+
+  @action
+  merge = (obj={}) => {
+    Object.assign(this.store, obj)
   }
 }
 
