@@ -14,6 +14,13 @@ module.exports = {
     filename: 'main.js'
   },
   // devtool: 'cheap-module-source-map',
+  resolve: {
+    alias: {
+      component: resolve('component'),
+      util: resolve('util'),
+      less: resolve('less')
+    }
+  },
   module: {
     rules: rules.concat([{
         test: /\.jsx?$/,
@@ -99,4 +106,8 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.BannerPlugin(`${moment().format('YYYY-MM-DD HH:mm:ss')}`)
   ]
+}
+
+function resolve(dir) {
+  return path.resolve(__dirname, `../src/${dir}`)
 }
