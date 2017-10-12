@@ -31,7 +31,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
+        loader: [
           'style-loader',
           'css-loader',
           {
@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: [
+        loader: [
           'style-loader',
           'css-loader',
           {
@@ -66,7 +66,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/,
+        test: /\.(png|jpe?g|gif)$/,
         use: 'url-loader?limit=8192&name=image/[hash].[ext]'
       }
     ])
@@ -87,13 +87,12 @@ module.exports = {
   ],
   devServer: {
     contentBase: [
-      path.join(__dirname, '../build'),
-      path.join(__dirname, '..')
+      path.join(__dirname, '../build')
     ],
     hot: true,
     host: '0.0.0.0',
     disableHostCheck: true,
-    setup(app){
+    before(app){
       app.use(function(req, res, next) {
         const p = path.join(__dirname, '../api', /\.json$/.test(req.path) ? req.path : req.path + '.json')
         if (fs.existsSync(p)) {
