@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import { inject, observer } from "mobx-react"
 
-import 'normalize.css/normalize.css'
 import './less/styles.less'
 
 import Header from 'component/Header'
