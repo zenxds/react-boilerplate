@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { inject, observer } from "mobx-react"
+import { hot } from 'react-hot-loader'
 
 import './less/styles.less'
 
@@ -18,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header {...this.props} />
         <Content msg={this.props.appStore.msg} />
         <Footer />
       </div>
@@ -26,4 +27,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default hot(module)(App)

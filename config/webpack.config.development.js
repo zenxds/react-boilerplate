@@ -6,8 +6,8 @@ const dxMock = require('dx-mock')
 
 const rules = require('./webpack.rules')
 module.exports = {
+  mode: 'development',
   entry: [
-    'react-hot-loader/patch',
     './src/index.js'
   ],
   output: {
@@ -22,12 +22,12 @@ module.exports = {
     rules: rules.concat([
       {
         test: /\.jsx?$/,
-        loader: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader', 'eslint-loader'],
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loader: [
+        use: [
           'style-loader',
           'css-loader',
           {
@@ -42,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loader: [
+        use: [
           'style-loader',
           'css-loader',
           {
@@ -56,7 +56,7 @@ module.exports = {
           {
             loader: 'less-loader',
             options: {
-              relativeUrls: false
+              javascriptEnabled: true
             }
           }
         ]
@@ -71,14 +71,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'template/index.html'
     }),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       'React': 'react'
     }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('dev')
-    })
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({})
   ],
   devServer: {
     contentBase: [

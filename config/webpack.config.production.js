@@ -8,6 +8,7 @@ const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 
 const rules = require('./webpack.rules')
 module.exports = {
+  mode: 'production',
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, '../build'),
@@ -19,12 +20,12 @@ module.exports = {
   module: {
     rules: rules.concat([{
         test: /\.jsx?$/,
-        loader: ['babel-loader'],
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract([
+        use: ExtractTextPlugin.extract([
           {
             loader: 'css-loader',
             options: {
@@ -43,7 +44,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract([
+        use: ExtractTextPlugin.extract([
           {
             loader: 'css-loader',
             options: {
@@ -61,7 +62,7 @@ module.exports = {
           {
             loader: 'less-loader',
             options: {
-              relativeUrls: false
+              javascriptEnabled: true
             }
           }
         ])
@@ -82,9 +83,8 @@ module.exports = {
     new webpack.DllReferencePlugin({
       manifest: require('../tmp/manifest.json')
     }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.DefinePlugin({}),
     new webpack.ProvidePlugin({
       'React': 'react'
     }),
@@ -98,8 +98,6 @@ module.exports = {
       hash: true,
       random: Math.random().toString().slice(2)
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
     new webpack.BannerPlugin(`${moment().format('YYYY-MM-DD HH:mm:ss')}`)
   ]
 }
