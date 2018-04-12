@@ -83,7 +83,6 @@ module.exports = {
     new webpack.DllReferencePlugin({
       manifest: require('../tmp/manifest.json')
     }),
-    new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({}),
     new webpack.ProvidePlugin({
       'React': 'react'
