@@ -2,7 +2,7 @@
 const path = require('path')
 const moment = require('moment')
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 
@@ -25,7 +25,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract([
+        use: [
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -40,11 +41,12 @@ module.exports = {
               }
             }
           }
-        ])
+        ]
       },
       {
         test: /\.less$/,
-        use: ExtractTextPlugin.extract([
+        use: [
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -65,7 +67,7 @@ module.exports = {
               javascriptEnabled: true
             }
           }
-        ])
+        ]
       },
       {
         test: /\.(jpe?g|png|gif)$/,
@@ -120,9 +122,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       'React': 'react'
     }),
-    new ExtractTextPlugin({
-      disable: false,
-      allChunks: true,
+    new MiniCssExtractPlugin({
+      chunkFilename: '[name].[hash].css',
       filename: '[name].css'
     }),
     new HtmlWebpackPlugin({
