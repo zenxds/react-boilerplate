@@ -18,8 +18,7 @@
         "transform-class-properties",
         ["import", {
           "libraryName": "antd",
-          "libraryDirectory": "es",
-          "style": "css"
+          "libraryDirectory": "es"
         }],
         "react-hot-loader/babel"
       ]
@@ -30,8 +29,7 @@
         "transform-class-properties",
         ["import", {
           "libraryName": "antd",
-          "libraryDirectory": "es",
-          "style": "css"
+          "libraryDirectory": "es"
         }]
       ]
     }
