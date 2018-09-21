@@ -1,24 +1,21 @@
 import { action } from 'mobx'
-import request from 'util/request'
+import { get } from 'util/request'
 import store from './appStore'
 
 class Action {
   constructor(store) {
     this.store = store
-    this.merge = this.merge.bind(this)
   }
 
-  getMsg = () => {
-    request({
-      url: '/hello'
-    }).then(data => {
+  getMsg() {
+    get('/hello').then(data => {
       this.merge({
         msg: data.helloMsg
       })
     })
   }
 
-  @action
+  @action.bound
   merge(obj={}) {
     Object.assign(this.store, obj)
   }
