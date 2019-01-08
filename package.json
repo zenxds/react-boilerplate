@@ -7,7 +7,7 @@
     "start": "BABEL_ENV=development webpack-dev-server -w --open --env=development",
     "vendor": "webpack --progress --env=dll",
     "build": "npm run vendor && BABEL_ENV=production webpack --progress --env=production",
-    "prettier": "./node_modules/.bin/prettier src/**/*.js src/**/*.jsx --write",
+    "prettier": "prettier src/**/*.js src/**/*.jsx --write",
     "test": "jest"
   },
   "author": {
