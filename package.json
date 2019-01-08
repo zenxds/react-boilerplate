@@ -7,6 +7,7 @@
     "start": "BABEL_ENV=development webpack-dev-server -w --open --env=development",
     "vendor": "webpack --progress --env=dll",
     "build": "npm run vendor && BABEL_ENV=production webpack --progress --env=production",
+    "prettier": "./node_modules/.bin/prettier src/**/*.js src/**/*.jsx --write",
     "test": "jest"
   },
   "author": {
@@ -51,6 +52,7 @@
     "mini-css-extract-plugin": "^0.4.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
+    "prettier": "^1.15.3",
     "react-hot-loader": "^4.3.6",
     "style-loader": "^0.23.0",
     "svg-url-loader": "^2.3.2",

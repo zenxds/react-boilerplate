@@ -16,7 +16,7 @@ class Action {
   }
 
   @action.bound
-  merge(obj={}) {
+  merge(obj = {}) {
     Object.assign(this.store, obj)
   }
 }
