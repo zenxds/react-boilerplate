@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { inject, observer } from "mobx-react"
+import { inject, observer } from 'mobx-react'
 import { hot } from 'react-hot-loader'
 
 import './less/styles.less'
@@ -11,7 +11,6 @@ import Footer from 'component/Footer'
 @inject('appStore', 'actions')
 @observer
 class App extends Component {
-
   componentDidMount() {
     this.props.actions.getMsg()
   }

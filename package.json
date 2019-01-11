@@ -8,7 +8,7 @@
     "vendor": "webpack --progress --env=dll",
     "build": "npm run vendor && BABEL_ENV=production webpack --progress --env=production",
     "prettier": "prettier src/**/*.js src/**/*.jsx --write",
-    "test": "jest"
+    "test": "jest ."
   },
   "husky": {
     "hooks": {
