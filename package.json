@@ -35,10 +35,17 @@
       "/node_modules/",
       "/src/"
     ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
     "transform": {
-      "^.+\\.jsx?$": "babel-jest"
+      "^.+\\.jsx?$": "babel-jest",
+      ".+\\.(css|styl|less|sass|scss)$": "jest-transform-css"
     },
-    "setupFilesAfterEnv": ["jest-enzyme"],
+    "setupFilesAfterEnv": [
+      "jest-enzyme"
+    ],
     "testEnvironment": "enzyme"
   },
   "devDependencies": {
@@ -68,6 +75,7 @@
     "jest": "^24.7.1",
     "jest-environment-enzyme": "^7.0.2",
     "jest-enzyme": "^7.0.2",
+    "jest-transform-css": "^2.0.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "lint-staged": "^8.1.0",
